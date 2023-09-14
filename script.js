@@ -19,11 +19,10 @@ addBook('asd', 'ssd', 23, 'no');
 
 function showAllBooks() {
     myLibrary.forEach((book) => {
-        const test = document.createElement('div');
-        test.classList.add('testCard');
-        test.textContent = `${book.title} by ${book.author} is ${book.pages} pages.`;
-        mainContent.appendChild(test);
-        console.log(book.author)
+        const bookCard = document.createElement('div');
+        bookCard.classList.add('bookCard');
+        bookCard.textContent = `${book.title} by ${book.author} is ${book.pages} pages.`;
+        mainContent.appendChild(bookCard);
     })
 }
 
