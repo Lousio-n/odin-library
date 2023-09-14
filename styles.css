@@ -1,0 +1,45 @@
+body,
+html {
+    font-family: 'Roboto Mono', monospace;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(120, 133, 141);
+    height: 100vh;
+}
+
+.topMenu {
+    background-color: blueviolet;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.buttonContainer {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addBookButton {
+    padding: 1em;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 30px;
+}
+
+#mainContent {
+    height: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, 200px);
+}
+
+.bookCard {
+    display: flex;
+    padding: 20px;
+    background-color: antiquewhite;
+    border-radius: 18px;
+}
