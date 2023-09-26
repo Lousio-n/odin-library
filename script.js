@@ -1,5 +1,6 @@
 const mainContainer = document.querySelector('.mainContainer');
 const bookShelf = document.querySelector('.bookShelf')
+const bookForm = document.getElementById("bookForm")
 const myLibrary = [];
 let bookId = 1;
 
@@ -17,11 +18,20 @@ function addBook(id, title, author, pages, status) {
     bookId++
 }
 
-addBook(bookId, 'lotr', 'tolkien', 55, true);
-addBook(bookId, 'asd', 'ssd', 23, false);
+bookForm.addEventListener('submit', createBookData);
 
+function createBookData(event) {
+    event.preventDefault();
+    const bookFormData = new FormData(event.target);
+
+    const bookFormObj = {};
+    bookFormData.forEach((value, key) => (bookFormObj[key] = value));
+    addBook(bookId, bookFormObj.bookTitle, bookFormObj.bookAuthor, bookFormObj.bookPages, bookFormObj.bookStatus);
+    showAllBooks();
+}
 
 function showAllBooks() {
+    bookShelf.replaceChildren();
     myLibrary.forEach((book) => {
         const id = `book${book.id}`;
 
@@ -34,7 +44,7 @@ function showAllBooks() {
         checkbox.value = book.status
         checkbox.className = id;
 
-        if (book.status === true) checkbox.checked = true;
+        if (book.status === "on") checkbox.checked = true;
 
         lable.appendChild(checkbox);
         lable.appendChild(document.createTextNode("Read Status"));
@@ -55,5 +65,3 @@ function showAllBooks() {
         bookShelf.appendChild(bookCard);
     })
 }
-
-showAllBooks();
