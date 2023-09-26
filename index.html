@@ -18,7 +18,26 @@
     </div>
     <div class="mainContainer">
         <div class="sidebar">
-            <div class="buttonContainer"><button class="addBookButton">Add a Book</button></div>
+            <form action="" id="bookForm">
+                <h2>Let's add a book!</h2>
+                <div class="input-container">
+                    <lable for="bookTitle">Title</lable>
+                    <input type="text" name="bookTitle" id="book-title">
+                </div>
+                <div class="input-container">
+                    <lable for="bookAuthor">Author</lable>
+                    <input type="text" name="bookAuthor" id="book-author">
+                </div>
+                <div class="input-container">
+                    <lable for="bookPages">Pages</lable>
+                    <input type="text" name="bookPages" id="book-pages">
+                </div>
+                <div class="input-container">
+                    <lable for="bookStatus">Book read status</lable>
+                    <input type="checkbox" name="bookStatus" id="book-status">
+                </div>
+                <div class="buttonContainer"><button type="submit" class="addBookButton">Add Book</button></div>
+            </form>
         </div>
         <div class="bookShelf">
             
