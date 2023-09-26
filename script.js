@@ -40,8 +40,16 @@ function showAllBooks() {
         lable.appendChild(document.createTextNode("Read Status"));
         
         const bookCard = document.createElement('div');
+        const bookTitle = document.createElement('p');
+        const bookAuthor = document.createElement('p');
+        const bookPages = document.createElement('p');
         bookCard.classList.add('bookCard');
-        bookCard.textContent = `Title: ${book.title} Author: ${book.author} Pages: ${book.pages}`;
+        bookTitle.textContent = `Title: ${book.title}`;
+        bookAuthor.textContent = `Author: ${book.author}`;
+        bookPages.textContent = `Pages: ${book.pages}`;
+        bookCard.appendChild(bookTitle);
+        bookCard.appendChild(bookAuthor)
+        bookCard.appendChild(bookPages)
         bookCard.appendChild(lable);
 
         bookShelf.appendChild(bookCard);
