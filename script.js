@@ -30,38 +30,39 @@ function createBookData(event) {
     showAllBooks();
 }
 
+function generateBookCard(book) {
+    const id = `book${book.id}`;
+
+    const lable = document.createElement('lable');
+    lable.setAttribute("for", id);
+
+    const checkbox = document.createElement('input');
+    checkbox.type = "checkbox";
+    checkbox.name = "readStatus";
+    checkbox.value = book.status
+    checkbox.className = id;
+    if (book.status === "on") checkbox.checked = true;
+
+    lable.append(checkbox, document.createTextNode("Read Status"));
+
+    const bookCard = document.createElement('div');
+    bookCard.classList.add('bookCard');
+
+    const bookTitle = document.createElement('p');
+    const bookAuthor = document.createElement('p');
+    const bookPages = document.createElement('p');
+    bookTitle.textContent = `Title: ${book.title}`;
+    bookAuthor.textContent = `Author: ${book.author}`;
+    bookPages.textContent = `Pages: ${book.pages}`;
+
+    bookCard.append(bookTitle, bookAuthor, bookPages, lable);
+
+    bookShelf.append(bookCard);
+}
+
 function showAllBooks() {
     bookShelf.replaceChildren();
     myLibrary.forEach((book) => {
-        const id = `book${book.id}`;
-
-        const lable = document.createElement('lable');
-        lable.setAttribute("for", id);
-
-        const checkbox = document.createElement('input');
-        checkbox.type = "checkbox";
-        checkbox.name = "readStatus";
-        checkbox.value = book.status
-        checkbox.className = id;
-
-        if (book.status === "on") checkbox.checked = true;
-
-        lable.appendChild(checkbox);
-        lable.appendChild(document.createTextNode("Read Status"));
-        
-        const bookCard = document.createElement('div');
-        const bookTitle = document.createElement('p');
-        const bookAuthor = document.createElement('p');
-        const bookPages = document.createElement('p');
-        bookCard.classList.add('bookCard');
-        bookTitle.textContent = `Title: ${book.title}`;
-        bookAuthor.textContent = `Author: ${book.author}`;
-        bookPages.textContent = `Pages: ${book.pages}`;
-        bookCard.appendChild(bookTitle);
-        bookCard.appendChild(bookAuthor)
-        bookCard.appendChild(bookPages)
-        bookCard.appendChild(lable);
-
-        bookShelf.appendChild(bookCard);
+        generateBookCard(book);
     })
 }
