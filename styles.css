@@ -40,6 +40,31 @@ html {
     height: 100%;
 }
 
+form {
+    padding-left: 1em;
+}
+
+.input-container {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-bottom: 1em;
+    margin-right: 1em;
+}
+
+.input-container input[type='text'] {
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 2rem;
+    padding-left: 1em;
+}
+
+.input-checkbox {
+    display: flex;
+    gap: 1rem;
+}
+
 .bookShelf {
     margin: 2rem;
     grid-column: 2 / 3;
@@ -58,7 +83,7 @@ html {
 }
 
 .bookCard lable {
-    margin-top: auto;
+    margin-top: 1em;
 }
 
 p {
