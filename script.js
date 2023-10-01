@@ -31,6 +31,25 @@ function createBookData(event) {
     bookForm.reset();
 }
 
+const removeButton = document.createElement('button');
+const trashImage = document.createElement('img');
+removeButton.className = 'removeBook';
+trashImage.src = 'delete.svg';
+removeButton.append(trashImage);
+
+function removeBook(id) {
+    myLibrary.forEach((book) => {
+        if (book.id === +id) {
+            myLibrary.splice(book)
+        }
+    })
+    showAllBooks();
+}
+
+removeButton.addEventListener('click', (event) => {
+    removeBook(event.currentTarget.parentNode.id)
+})
+
 function generateBookCard(book) {
     const id = `book${book.id}`;
 
@@ -47,7 +66,8 @@ function generateBookCard(book) {
     lable.append(checkbox, document.createTextNode("Read Status"));
 
     const bookCard = document.createElement('div');
-    bookCard.classList.add('bookCard');
+    bookCard.classList.add('bookCard')
+    bookCard.id = book.id;
 
     const bookTitle = document.createElement('p');
     const bookAuthor = document.createElement('p');
@@ -56,7 +76,7 @@ function generateBookCard(book) {
     bookAuthor.textContent = `Author: ${book.author}`;
     bookPages.textContent = `Pages: ${book.pages}`;
 
-    bookCard.append(bookTitle, bookAuthor, bookPages, lable);
+    bookCard.append(bookTitle, bookAuthor, bookPages, lable, removeButton);
 
     bookShelf.append(bookCard);
 }
