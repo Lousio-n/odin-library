@@ -22,18 +22,18 @@
                 <h2>Let's add a book!</h2>
                 <div class="input-container">
                     <lable for="bookTitle">Title</lable>
-                    <input type="text" name="bookTitle" id="book-title">
+                    <input type="text" name="bookTitle" id="book-title" required>
                 </div>
                 <div class="input-container">
                     <lable for="bookAuthor">Author</lable>
-                    <input type="text" name="bookAuthor" id="book-author">
+                    <input type="text" name="bookAuthor" id="book-author" required>
                 </div>
                 <div class="input-container">
                     <lable for="bookPages">Pages</lable>
-                    <input type="text" name="bookPages" id="book-pages">
+                    <input type="text" name="bookPages" id="book-pages" required>
                 </div>
-                <div class="input-container">
-                    <lable for="bookStatus">Book read status</lable>
+                <div class="input-checkbox">
+                    <lable for="bookStatus">Already read</lable>
                     <input type="checkbox" name="bookStatus" id="book-status">
                 </div>
                 <div class="buttonContainer"><button type="submit" class="addBookButton">Add Book</button></div>
