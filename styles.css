@@ -90,3 +90,20 @@ p {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.removeBook {
+    height: 3em;
+    width: 3em;
+    background-color: rgb(196, 0, 0);
+    border: none;
+    border-radius: 25%;
+    box-shadow: 0 2px #666;
+}
+
+.removeBook:hover {
+    background-color: red;
+}
+
+.removeBook:active {
+    transform: translateY(2px);
+}
