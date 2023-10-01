@@ -10,8 +10,37 @@ html {
 .topMenu {
     background-color: blueviolet;
     display: flex;
-    justify-content: center;
     padding: 1rem;
+    justify-content: space-between;
+    margin: 1rem;
+    border-radius: 1em;
+}
+
+.menuTitle {
+    display: flex;
+    gap: 1rem;
+}
+
+.menuTitle img {
+    height: 5em;
+}
+
+.menuButtons {
+    display: flex;
+    align-items: center;
+}
+
+.menuButtons ul {
+    display: flex;
+    list-style-type: none;
+    gap: 1rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.menuButtons ul li:hover {
+    color: aqua;
+    cursor: pointer;
 }
 
 .buttonContainer {
@@ -29,15 +58,16 @@ html {
 }
 
 .mainContainer {
-    height: 100%;
     display: grid;
     grid-template-columns: 1fr 4fr;
+    margin-left: 1rem;
 }
 
 .sidebar {
     grid-column: 1;
     background-color: aquamarine;
-    height: 100%;
+    padding: 1rem;
+    border-radius: 5%;
 }
 
 form {
