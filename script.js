@@ -28,6 +28,7 @@ function createBookData(event) {
     bookFormData.forEach((value, key) => (bookFormObj[key] = value));
     addBook(bookId, bookFormObj.bookTitle, bookFormObj.bookAuthor, bookFormObj.bookPages, bookFormObj.bookStatus);
     showAllBooks();
+    bookForm.reset();
 }
 
 function generateBookCard(book) {
