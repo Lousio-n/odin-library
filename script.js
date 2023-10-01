@@ -40,7 +40,8 @@ removeButton.append(trashImage);
 function removeBook(id) {
     myLibrary.forEach((book) => {
         if (book.id === +id) {
-            myLibrary.splice(book)
+            const idx = myLibrary.indexOf(book);
+            myLibrary.splice(idx, 1);
         }
     })
     showAllBooks();
@@ -48,6 +49,11 @@ function removeBook(id) {
 
 removeButton.addEventListener('click', (event) => {
     removeBook(event.currentTarget.parentNode.id)
+})
+
+document.addEventListener('mouseover', (event) => {
+    const card = event.target.closest('.bookCard');
+    card.append(removeButton);
 })
 
 function generateBookCard(book) {
@@ -76,7 +82,7 @@ function generateBookCard(book) {
     bookAuthor.textContent = `Author: ${book.author}`;
     bookPages.textContent = `Pages: ${book.pages}`;
 
-    bookCard.append(bookTitle, bookAuthor, bookPages, lable, removeButton);
+    bookCard.append(bookTitle, bookAuthor, bookPages, lable);
 
     bookShelf.append(bookCard);
 }
