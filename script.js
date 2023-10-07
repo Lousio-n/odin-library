@@ -42,6 +42,14 @@ function removeBook(id) {
     showAllBooks();
 }
 
+function changeBookStatus(id, status) {
+    myLibrary.forEach((book) => {
+        if (book.id === +id) {
+            book.status = status;
+        }
+    })
+}
+
 function generateBookCard(book) {
     const bookCard = document.createElement('div');
     const bookTitle = document.createElement('p');
@@ -54,24 +62,40 @@ function generateBookCard(book) {
     changeReadStatus.className = 'changeReadStatus'
     deleteBookButton.className = 'deleteBook';
 
-    if (book.status === "on") changeReadStatus.style.backgroundColor = "green";
+    if (book.status === "on") {
+        changeReadStatus.id = 'bookRead';
+        changeReadStatus.style.backgroundColor = "green";
+        changeReadStatus.textContent = "Finished Reading";
+    } else {
+        changeReadStatus.id = 'bookNotRead';;
+        changeReadStatus.style.backgroundColor = "red";
+        changeReadStatus.textContent = "Not Read";
+    }
 
-    changeReadStatus.textContent = "I Have Read This Book";
     deleteBookButton.textContent = "Delete Book";
     bookTitle.textContent = `Title: ${book.title}`;
     bookAuthor.textContent = `Author: ${book.author}`;
     bookPages.textContent = `Pages: ${book.pages}`;
 
     changeReadStatus.addEventListener('click', (event) => {
-        if (book.status === "on") {
-            changeReadStatus.style.backgroundColor = "red";
+        let status;
+        if (event.target.id === 'bookRead') {
+            event.target.id = 'bookNotRead'
+            status = 'off';
+            event.target.style.backgroundColor = "red";
+            event.target.textContent = "Not Read";
         } else {
-            changeReadStatus.style.backgroundColor = "green";
+            event.target.id = 'bookRead'
+            status = 'on';
+            event.target.style.backgroundColor = "green";
+            event.target.textContent = "Finished Reading";
         }
+        changeBookStatus(event.currentTarget.parentNode.id, status)
+
     })
 
     deleteBookButton.addEventListener('click', (event) => {
-        removeBook(event.currentTarget.parentNode.id)
+        removeBook(event.currentTarget.parentNode.id);
     })
 
     bookCard.append(bookTitle, bookAuthor, bookPages, changeReadStatus, deleteBookButton);
