@@ -1,2 +1,2 @@
-# odin-library
-Project for odin project. A simple library.
+# A simple library
+Project for odin project.
