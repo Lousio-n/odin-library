@@ -3,31 +3,38 @@ html {
     font-family: 'Roboto Mono', monospace;
     margin: 0;
     padding: 0;
-    background-color: rgb(120, 133, 141);
+    background-color: #eaeef6;
     height: 100vh;
 }
 
+h1 {
+    padding: 0;
+}
+
 .topMenu {
-    background-color: blueviolet;
     display: flex;
-    padding: 1rem;
+    padding: 1rem 1rem 0 1rem;
     justify-content: space-between;
     margin: 1rem;
-    border-radius: 1em;
+    border-bottom: 1px solid black;
+    grid-column: 1 / 3;
+    grid-row: 1;
 }
 
 .menuTitle {
     display: flex;
     gap: 1rem;
+    align-items: flex-end;
 }
 
 .menuTitle img {
     height: 5em;
+    padding-bottom: 1em;
 }
 
 .menuButtons {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
 }
 
 .menuButtons ul {
@@ -36,6 +43,7 @@ html {
     gap: 1rem;
     font-size: 1.25rem;
     font-weight: 700;
+    padding-bottom: 2px;
 }
 
 .menuButtons ul li:hover {
@@ -60,18 +68,21 @@ html {
 .mainContainer {
     display: grid;
     grid-template-columns: 1fr 4fr;
+    grid-template-rows: .5fr 6fr .5fr;
     margin-left: 1rem;
+    height: 100vh;
 }
 
 .sidebar {
     grid-column: 1;
-    background-color: aquamarine;
+    grid-row: 2;
     padding: 1rem;
-    border-radius: 5%;
+    border-right: 1px solid black;
 }
 
 form {
     padding-left: 1em;
+    font-size: 1.1em;
 }
 
 .input-container {
@@ -85,7 +96,6 @@ form {
 
 .input-container input[type='text'] {
     border: 1px solid black;
-    border-radius: 5px;
     height: 2rem;
     padding-left: 1em;
 }
@@ -98,22 +108,49 @@ form {
 .bookShelf {
     margin: 2rem;
     grid-column: 2 / 3;
+    grid-row: 2;
     display: grid;
     gap: 1rem;
-    height: 250px;
-    grid-template-columns: repeat(auto-fit, 250px);
+    grid-template-columns: repeat(auto-fit, minmax(0, 250px));
+    grid-auto-rows: min-content;
 }
 
 .bookCard {
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    background-color: antiquewhite;
-    border-radius: 18px;
+    background-color: #fffae6;
+    border-bottom: solid 3px white;
+    border-right: solid 3px white;
+    box-shadow: 2px 2px 7px 0 #404f64;
+    height: 250px;
 }
 
-.bookCard lable {
-    margin-top: 1em;
+.bookCard p {
+    padding-left: 1em;
+}
+
+.bookCard button {
+    font-size: 1.1rem;
+    height: 2.3rem;
+    border-radius: 0;
+    border: 1px solid white;
+}
+
+.changeReadStatus {
+    background-color: #ff0000;
+    margin-top: auto;
+}
+
+.changeReadStatus:hover {
+    opacity: 0.85;
+}
+
+.deleteBook {
+    background-color: #d10f0f;
+}
+
+.deleteBook:hover {
+    background-color: #ff0000;
 }
 
 p {
@@ -121,19 +158,13 @@ p {
     text-overflow: ellipsis;
 }
 
-.removeBook {
-    height: 3em;
-    width: 3em;
-    background-color: rgb(196, 0, 0);
-    border: none;
-    border-radius: 25%;
-    box-shadow: 0 2px #666;
-}
-
-.removeBook:hover {
-    background-color: red;
-}
-
-.removeBook:active {
-    transform: translateY(2px);
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    grid-row: 3;
+    grid-column: 1 / 3;
+    border-top: 1px solid black;
 }
