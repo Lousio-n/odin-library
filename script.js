@@ -31,11 +31,6 @@ function createBookData(event) {
     bookForm.reset();
 }
 
-const removeButton = document.createElement('button');
-const trashImage = document.createElement('img');
-removeButton.className = 'removeBook';
-trashImage.src = 'delete.svg';
-removeButton.append(trashImage);
 
 function removeBook(id) {
     myLibrary.forEach((book) => {
@@ -47,42 +42,39 @@ function removeBook(id) {
     showAllBooks();
 }
 
-removeButton.addEventListener('click', (event) => {
-    removeBook(event.currentTarget.parentNode.id)
-})
-
-document.addEventListener('mouseover', (event) => {
-    const card = event.target.closest('.bookCard');
-    card.append(removeButton);
-})
-
 function generateBookCard(book) {
-    const id = `book${book.id}`;
-
-    const lable = document.createElement('lable');
-    lable.setAttribute("for", id);
-
-    const checkbox = document.createElement('input');
-    checkbox.type = "checkbox";
-    checkbox.name = "readStatus";
-    checkbox.value = book.status
-    checkbox.className = id;
-    if (book.status === "on") checkbox.checked = true;
-
-    lable.append(checkbox, document.createTextNode("Read Status"));
-
     const bookCard = document.createElement('div');
-    bookCard.classList.add('bookCard')
-    bookCard.id = book.id;
-
     const bookTitle = document.createElement('p');
     const bookAuthor = document.createElement('p');
     const bookPages = document.createElement('p');
+    const changeReadStatus = document.createElement('button');
+    const deleteBookButton = document.createElement('button');
+    bookCard.classList.add('bookCard')
+    bookCard.id = book.id;
+    changeReadStatus.className = 'changeReadStatus'
+    deleteBookButton.className = 'deleteBook';
+
+    if (book.status === "on") changeReadStatus.style.backgroundColor = "green";
+
+    changeReadStatus.textContent = "I Have Read This Book";
+    deleteBookButton.textContent = "Delete Book";
     bookTitle.textContent = `Title: ${book.title}`;
     bookAuthor.textContent = `Author: ${book.author}`;
     bookPages.textContent = `Pages: ${book.pages}`;
 
-    bookCard.append(bookTitle, bookAuthor, bookPages, lable);
+    changeReadStatus.addEventListener('click', (event) => {
+        if (book.status === "on") {
+            changeReadStatus.style.backgroundColor = "red";
+        } else {
+            changeReadStatus.style.backgroundColor = "green";
+        }
+    })
+
+    deleteBookButton.addEventListener('click', (event) => {
+        removeBook(event.currentTarget.parentNode.id)
+    })
+
+    bookCard.append(bookTitle, bookAuthor, bookPages, changeReadStatus, deleteBookButton);
 
     bookShelf.append(bookCard);
 }
