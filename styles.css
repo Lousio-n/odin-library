@@ -61,8 +61,20 @@ h1 {
 .addBookButton {
     padding: 1em;
     font-size: 1.2rem;
-    font-weight: 700;
-    border-radius: 30px;
+    font-weight: 500;
+    border-radius: 0;
+    border: transparent;
+    box-shadow: 2px 2px 4px 0 #404f64;
+    background-color: #adfbfd;
+}
+
+.addBookButton:hover {
+    background-color: #97f8fc;
+}
+
+.addBookButton:active {
+    box-shadow: none;
+    transform: translateY(2px);
 }
 
 .mainContainer {
